@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container" x-data="passwordGenerator">
+      <div class="form-group">
+        <label for="length">Tamano de la contrasena</label>
+        <input type="number" id="length" x-model.number="charCant" min="1" />
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" x-model.boolean="includeUppercase" />
+          Incluir Mayusculas
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" x-model.boolean="includeSpecials" />
+          Incluir caracteres especiales
+        </label>
+      </div>
+      <div class="form-group">
+        <button @click="generatePassword()">Generar contrasena</button>
+      </div>
+      <template x-if="password" >
+        <div class="result" x-text="password"></div>
+      </template>
+    </div>
     <script src="main.js"></script>
-</body>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("passwordGenerator", () => ({
+          password: '',
+          charCant: 10,
+          includeUppercase: false,
+          includeSpecials: false,
+          generatePassword() {
+            this.password = passGen(this.charCant, this.includeUppercase, this.includeSpecials)
+          }
+        }))
+      });
+    </script>
+  </body>
 </html>
