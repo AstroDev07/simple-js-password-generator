@@ -5,8 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    * {
+        font-size: 20px;
+    }
+
+    #char-legth {
+        width: 34px;
+    }
+
+
+</style>
 <body>
-    
+    <div class="body-form">
+        <h1 class="title-text">Generador de Contraseña</h1>
+        <div class="mini-form">
+            <div class="char-parent">
+                <input type="number" max="16" min="4" value="4" name="" id="char-legth">
+                <label for="char-legth">Cantidad de caracteres</label>
+            </div>
+            <div class="checkboxs-parent">
+                <input type="checkbox" value="" id="upper-check">
+                <label for="upper-check">Mayusculas</label>
+                <input type="checkbox" value="" id="ec-check">
+                <label for="ec-check">Especial Chars</label>
+            </div>
+            <button class="gen-button">Generar Contraseña</button>    
+        </div>
+        <div  style="margin-top: 10px;" class="passw-gen">
+            <button onclick="copyText()">📑</button>
+            <span>Contraseña: </span>
+            <span class="gen-passw-text"></span>
+        </div>
+        
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-let passGen = (charCant, includeUppercase, includeSpecials) => {
+const passGen = (charCant, includeUppercase, includeSpecials) => {
   let chars = "abcdefghijklmnopqrstuvwxyz";
   let specials = "!@#$%&*?+=_-/][{}";
 
@@ -46,6 +46,13 @@ let passGen = (charCant, includeUppercase, includeSpecials) => {
         }
         password += specials[randNum];
       }
+      else {
+        let randNum = Math.round(Math.random() * chars.length);
+        if (randNum == chars.length) {
+          randNum -= 1;
+        }
+        password += chars[randNum];
+      }
     }
   }
   if (password.length > charCant) {
@@ -55,7 +62,23 @@ let passGen = (charCant, includeUppercase, includeSpecials) => {
   }
 };
 
-let key = passGen(22, true, true);
-console.log(key);
-console.log(key.length);
+const copyText = async () => {
+  const gen_passw_text_span = document.querySelector(".gen-passw-text");
+  if (gen_passw_text_span.textContent.trim().length == 0) {
+    alert("No ha generado nada aun");
+  } else {
+    await navigator.clipboard.writeText(gen_passw_text_span.textContent);
+    alert("Contraseña copiada correctamente");
+  }
+  return;
+};
 
+const button = document.querySelector(".gen-button");
+button.addEventListener("click", (ev) => {
+  const upper_checkbox_value = document.getElementById("upper-check").checked,
+        ec_checkbox_value = document.getElementById("ec-check").checked,
+        cant_chars = document.getElementById("char-legth").value;
+  const gen_passw_text_span = document.querySelector(".gen-passw-text");
+  gen_passw_text_span.textContent = passGen(cant_chars,upper_checkbox_value,ec_checkbox_value);
+  return;
+});
