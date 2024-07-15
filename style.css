@@ -1,8 +1,24 @@
-body {
+*,
+*::after,
+*::before{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: .3s ease-in-out;
+}
+
+body {
+  background:linear-gradient(rgb(148, 201, 217) 10%, white) no-repeat;
+  min-height: 100vh;
+
+  /* Flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .initial-header {
@@ -11,8 +27,11 @@ body {
   min-height: 75px;
   background-color: rgb(148, 201, 217);
   align-items: center;
-  padding-right: 1em;
-  padding-left: 1em;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .initial-header * {
@@ -31,3 +50,64 @@ body {
   align-items: center;
 }
 
+.container{
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 10px;
+  min-height: 28rem;
+  min-width: 22rem;
+
+  /* Flex */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 0 0 10px 3px rgb(56, 56, 56);
+
+  &:hover{
+    box-shadow: 0 0 10px 6px rgb(107, 107, 107);
+  }
+}
+
+.generator{
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  background-color: rgb(148, 201, 217);
+  border: 0;
+
+  &:hover{
+    background-color: rgb(121, 156, 167);
+  }
+}
+
+.content{
+  background-color: #f9f9f9;
+  border: .5px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 15rem;
+  position: relative;
+}
+
+.copiar{
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  border:0;
+  background-color: rgb(106, 252, 106);
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  font-size: 16px;
+  border: 1px solid black;
+}
+
+.copiando{
+  width: 6rem;
+  padding: .5rem 1rem;
+  background-color: rgb(209, 209, 209);
+  border: 1px solid black;
+  border-radius: 5px;
+
+  &:hover{
+    background-color: rgb(158, 158, 158);
+  }
+}
