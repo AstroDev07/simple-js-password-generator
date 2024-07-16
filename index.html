@@ -95,9 +95,9 @@
           <div class="result" x-text="password"></div>
         </template>
 
-        <p class="copiar">copiado</>
+        <p x-show="mostrar" class="copiar">Copiado</p>
       </div>
-      <button class="copiando">copiar</button>
+      <button @click="copiarAlPortapapeles()" class="copiando">copiar</button>
     </div>
 
     <script src="main.js"></script>
@@ -107,6 +107,7 @@
         Alpine.data("passwordGenerator", () => ({
           password: "",
           charCant: 10,
+          mostrar: false,
           includeUppercase: false,
           includeSpecials: false,
           generatePassword() {
@@ -116,6 +117,17 @@
               this.includeSpecials
             );
           },
+          copiarAlPortapapeles(){
+            navigator.clipboard.writeText(this.password).then(() => {
+              this.mostrarPopUp()
+            }).catch(err => console.error(err))
+          },
+          mostrarPopUp(){
+            this.mostrar = true
+            setTimeout(() => {
+              this.mostrar = false
+            }, 3000)
+          }
         }));
       });
     </script>
