@@ -86,6 +86,9 @@ body {
   padding: 1rem;
   min-height: 15rem;
   position: relative;
+  /* fixed with para evitar q se pase al usar word */
+  width: 100%;
+  max-width: 350px;
 }
 
 .copiar{
@@ -110,4 +113,8 @@ body {
   &:hover{
     background-color: rgb(158, 158, 158);
   }
+}
+
+.result {
+  word-wrap: break-word; 
 }
